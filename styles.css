@@ -2,6 +2,15 @@
   background-color: lightblue;
 }
 
-.gallery-container {
+.gallery-item-container {
   /* TODO add styles (hint: use flex!) https://www.w3schools.com/cssref/ */
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2px;
+  /* justify-content: center; */
+}
+.gallery-item {
+  margin: 5px;
+  max-width: 30%;
+  height: auto;
 }

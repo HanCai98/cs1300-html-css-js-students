@@ -12,7 +12,7 @@ const apiRequest = async () => {
    */
 
   // TODO fill in your own port number 
-  const PORT_NUMBER = "";
+  const PORT_NUMBER = "8010";
 
   const baseUrl = `http://localhost:${PORT_NUMBER}/proxy/api/`
 
@@ -29,7 +29,7 @@ const apiRequest = async () => {
     }
   });
 
-  // console.log(response);
+  console.log(response);
 
   // Return the response in JSON format
   return response.json();
@@ -40,24 +40,31 @@ const updatePage = async () => {
 
   // Make API request and get an array of fruit objects
   const fruitsArray = await apiRequest();
-  // console.log(fruitsArray);
+  console.log(fruitsArray);
 
   // TODO: Use either `map` and/or `filter` to extract some data from the array of fruit objects
   // For example, find "name of all fruits whose sugar > 15", 
 
+  const fruitsAfterFiltered = fruitsArray.filter(obj => obj.nutritions.sugar > 10);
+
+  console.log(fruitsAfterFiltered)
+
+  const mapped = fruitsAfterFiltered.map(obj => obj.name)
+
   // TODO: Create a new HTML element to display your data 
+  exampleAddElement(mapped)
 
   // TODO: Append your new element to the page
 
 }
 
 // SAMPLE CODE of how to create and append a new HTML element to the page
-const exampleAddElement = () => {
+const exampleAddElement = (mapped) => {
   // Create a new HTML element and set its properties
   const newElement = document.createElement('div');
-  newElement.innerHTML = "this text is inside a div";
+  newElement.innerHTML = mapped;
 
   // Append the new element to an existing part of the webpage
-  const existingElement = document.getElementById('example-id');
+  const existingElement = document.getElementById('cs1300-gallery');
   existingElement.append(newElement);
 }
